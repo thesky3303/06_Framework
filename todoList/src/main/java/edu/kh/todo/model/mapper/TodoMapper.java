@@ -71,19 +71,11 @@ public interface TodoMapper {
 
 	int delTodo(int todoNo);
 
-	Todo updateTodo(int todoNo);
-
 	int update(Todo todo);
 
 	
 
-	
-	//int delTodo(Todo todo);
 
-
-
-
-	
 	
 
 	

@@ -41,17 +41,7 @@ public interface TodoService {
 
 	int delTodo(int todoNo);
 
-	Todo updateTodo(int todoNo);
-
 	int update(String todoTitle, String todoContent, int todoNo);
-
-
-
-	
-	//int delTodo(Todo todo);
-
-	
-
 
 
 

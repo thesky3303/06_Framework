@@ -122,7 +122,7 @@ public class TodoController {
 	}
 	
 
-	@GetMapping("update")       // /todo/detail GET 방식 요청 매핑
+	@GetMapping("update")       // 수정화면 진입용
 	public String updateTodo(@RequestParam("todoNo") int todoNo, 
 							Model model, 
 							RedirectAttributes ra ) {
@@ -131,26 +131,15 @@ public class TodoController {
 		
 		String path = null;
 		
-		// 조회 결과가 있을 경우 detail.html forward
 		if(todo != null) {
-			
-			// templates/todo/detail.html
-			
-			// 접두사 : classpath:/templates/
-			// 접미사 : .html
-			// -> src/main/resources/templates/todo/detail.html
 			path = "todo/update";
 			
 			model.addAttribute("todo", todo); // request scope 값 세팅
 			
 		} else {
-			// 조회 결과가 없을 경우 메인페이지로 리다이렉트(message : 해당 할 일이 존재하지 않습니다)
-			
+
 			path = "redirect:/";
-			
-			// RedirectAttributes : 
-			// 리다이렉트 시 데이터를 session scope로 잠시 이동 시킬 수 있는 
-			// 1회성 값 전달용 객체
+
 			ra.addFlashAttribute("message", "해당 할 일이 존재하지 않습니다");
 		}
 		
@@ -159,7 +148,7 @@ public class TodoController {
 	}
 	
 	
-	@PostMapping("update") 
+	@PostMapping("update")  // 실제 수정용
 	public String update(
 			@RequestParam("todoTitle") String todoTitle,
 			@RequestParam("todoContent") String todoContent,

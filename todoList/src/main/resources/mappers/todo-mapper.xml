@@ -114,16 +114,7 @@
   	</update>
  
  
- 	<!--  수정 -->
-   	<select id="updateTodo" parameterType="_int" resultType="Todo">
-  		SELECT TODO_NO, TODO_TITLE, TODO_CONTENT, COMPLETE,
-		TO_CHAR(REG_DATE, 'YYYY-MM-DD HH24:MI:SS') REG_DATE
-		FROM TB_TODO
-		WHERE TODO_NO = ${todoNo}
-  	</select>
- 
- 
-  <!--  수정2  -->
+  <!--  수정  -->
    	<update id="update" parameterType="Todo" >
 	UPDATE TB_TODO SET
     TODO_TITLE = #{todoTitle},
@@ -131,14 +122,7 @@
     WHERE TODO_NO = ${todoNo}
   	</update>
 
- 
- <!--  수정2 
-   	<update id="update" parameterType="Todo" >
-	UPDATE TB_TODO SET
-  	TODO_TITLE = ${todoTitle},
-    TODO_CONTENT = #{todoContent}
-  	</update>
- -->
+
  
   	<!--  삭제 -->
    	<delete id="delTodo" parameterType="Todo" >
