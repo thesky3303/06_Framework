@@ -34,7 +34,23 @@ completeBtn.addEventListener("click", e => {
 
 // 수정 버튼
 const updateBtn = document.querySelector("#updateBtn");
+updateBtn.addEventListener("click", e => {
+
+  const todoNo = e.target.dataset.todoNo;
+
+  location.href 
+    = `/todo/update?todoNo=${todoNo}`;
+});
+
 
 
 // 삭제 버튼
 const deleteBtn = document.querySelector("#deleteBtn");
+
+deleteBtn.addEventListener("click", e => {
+
+  const todoNo = e.target.dataset.todoNo;
+
+  location.href 
+    = `/todo/delTodo?todoNo=${todoNo}`;
+});

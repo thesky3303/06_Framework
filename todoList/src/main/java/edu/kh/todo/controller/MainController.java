@@ -12,15 +12,14 @@ import edu.kh.todo.model.dto.Todo;
 import edu.kh.todo.model.service.TodoService;
 import lombok.extern.slf4j.Slf4j;
 
-
 @Slf4j // 로그 객체 자동 생성
-@Controller //  요청/응답 제어 역할 명시 + Bean 등록
+@Controller // 요청/응답 제어 역할 명시 + Bean 등록
 public class MainController {
 	
 	@Autowired // 등록된 Bean 중 같은 타입이거나 상속관계 DI (의존성 주입)
 	private TodoService service;
 	
-	@RequestMapping ("/")
+	@RequestMapping("/")
 	public String mainPage(Model model) {
 		
 		log.debug("service : " + service);
@@ -33,14 +32,15 @@ public class MainController {
 		// -----------------------------------------------------------
 		
 		// TB_TODO 테이블에 저장된 전체 할 일 목록 조회하기
-		// + 완료된 할 일 갯수
+		//  + 완료된 할 일 갯수
 		
-		// Service 메서드 호출 후 결과 반환받기
+		// Service 메서드 호출 후 결과 반환 받기
 		Map<String, Object> map = service.selectAll();
 		
 		// map에 담긴 내용 추출
 		List<Todo> todoList = (List<Todo>)map.get("todoList");
 		int completeCount = (int)map.get("completeCount");
+		
 		
 		// Model을 이용해서 조회 결과 request scope에 추가
 		model.addAttribute("todoList", todoList);
