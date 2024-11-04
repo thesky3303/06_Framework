@@ -12,18 +12,18 @@ import edu.kh.todo.model.dao.TodoDAO;
 import edu.kh.todo.model.dto.Todo;
 import edu.kh.todo.model.mapper.TodoMapper;
 
-// @Transactional
+// @@Transactional
 // - 트랜잭션 처리를 수행하라고 지시하는 어노테이션
-// - 정상 코드 수행 시 COMMIT 
-// - 기본값 : Service 내부 코드 수행 중 RuntimeException 발생 시 rollback
+// - 정상 코드 수행 시 COMMIT
+// - 기본값 : Service 내부 코드 수행 중 RunttimeException 발생 시 rollback
 
 // rollbackFor 속성 : 어떤 예외가 발생했을 때 rollback 할지 지정
 
 
 @Transactional(rollbackFor=Exception.class)
-@Service  // 비즈니스 로직(데이터 가공, 트랜잭션 처리) 역할 명시 + Bean 등록
+@Service  //비즈니스 로직 (데이터 가공, 트랜젝션 처리) 역할 명시 + Bean 등록
 public class TodoServiceImpl implements TodoService{
-
+	
 	@Autowired // TodoDAO와 같은 타입 Bean 의존성 주입(DI)
 	private TodoDAO dao;
 	
@@ -36,8 +36,8 @@ public class TodoServiceImpl implements TodoService{
 	public String testTitle() {
 		return dao.testTitle();
 	}
-	
-	//  할 일 목록 + 완료된 할 일 갯수 조회
+
+	// 할 일 목록 + 완료된 할 일 갯수 조회
 	@Override
 	public Map<String, Object> selectAll() {
 		
@@ -56,14 +56,14 @@ public class TodoServiceImpl implements TodoService{
 		
 		return map;
 	}
-	
+
 	// 할 일 추가
 	@Override
 	public int addTodo(String todoTitle, String todoContent) {
 		
 		// 트랜잭션 제어 처리 -> @Transactinal 어노테이션
 		
-		// 마이바티스에서 SQL 에 전달할 수 있는 파라미터 개수는 오직 1개!!!
+		// 마이바티스에서 SQL에 전달할 수 있는 파라미터 개수는 오직 1개 !!!
 		// -> todoTitle, todoContent 를 Todo DTO 로 묶어서 전달
 		
 		Todo todo = new Todo();
@@ -73,6 +73,7 @@ public class TodoServiceImpl implements TodoService{
 		return mapper.addTodo(todo);
 	}
 	
+
 	// 할 일 상세조회
 	@Override
 	public Todo todoDetail(int todoNo) {
@@ -84,44 +85,27 @@ public class TodoServiceImpl implements TodoService{
 	public int changeComplete(Todo todo) {
 		return mapper.changeComplete(todo);
 	}
-	
 
-	// 할 일 삭제
+
 	@Override
-	public int todoDelete(int todoNo) {
-		return mapper.todoDelete(todoNo);
-	}
-	
-	
-	
-	// 할 일 수정
-	@Override
-	public int todoUpdate(Todo todo) {
-		
-		// 마이바티스 객체를 이용할 때
-		// SQL에 전달할 수 있는 파라미터는 오직 1개!!!
-		// -> 여러 데이터를 전달하고 싶으면 Map, DTO, List로 묶어서 전달
-		return mapper.todoUpdate(todo);
-	}
-	
-	// 전체 할 일 개수 조회
-	@Override
-	public int getTotalCount() {
-		return mapper.getTotalCount();
-	}
-	
-	// 완료된 할일 개수 조회
-	@Override
-	public int getCompleteCount() {
-		return mapper.getCompleteCount();
+	public int delTodo(int todoNo) {
+		return mapper.delTodo(todoNo);
 	}
 
-	// 할일 목록 조회
+
 	@Override
-	public List<Todo> selectList() {
-		return mapper.selectAll();
+	public int update(String todoTitle, String todoContent, int todoNo) {
+		Todo todo = new Todo();
+		todo.setTodoTitle(todoTitle);
+		todo.setTodoContent(todoContent);
+		todo.setTodoNo(todoNo);
+		return mapper.update(todo);
 	}
 
 
 	
+
+
+	
+
 }

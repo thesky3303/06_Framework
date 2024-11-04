@@ -8,7 +8,7 @@
 </head>
 <body>
   <h1>Todo List</h1>
-  <h3><a href="/ajax/main">TodoList - Ajax 버전</a></h3>
+
   <p th:text="${testTitle}">todoNo가 1인 할 일 제목 조회</p>
 
   <form action="/todo/add" method="POST">
@@ -28,6 +28,27 @@
   <h3 th:text="|전체 Todo 개수 : ${#lists.size(todoList)}개 
     / 완료된 Todo 개수 : ${completeCount}개|">내용</h3>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
   <table border="1" style="border-collapse: collapse;">
     <thead>
       <tr>

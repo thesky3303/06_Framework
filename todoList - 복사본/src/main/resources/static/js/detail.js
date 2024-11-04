@@ -31,29 +31,26 @@ completeBtn.addEventListener("click", e => {
 
 
 
-// -----------------------------------------
 
-// 수정 버튼 클릭 시
+// 수정 버튼
 const updateBtn = document.querySelector("#updateBtn");
-
 updateBtn.addEventListener("click", e => {
 
-  // data-todo-no="${todo.todoNo}" 얻어오기
   const todoNo = e.target.dataset.todoNo;
 
-  location.href = `/todo/update?todoNo=${todoNo}`;
+  location.href 
+    = `/todo/update?todoNo=${todoNo}`;
 });
 
 
-// --------------------------------------------------
 
-// 삭제 버튼 클릭 시
+// 삭제 버튼
 const deleteBtn = document.querySelector("#deleteBtn");
 
 deleteBtn.addEventListener("click", e => {
 
-  if(confirm("삭제 하시겠습니까?")){
-    location.href = `/todo/delete?todoNo=${e.target.dataset.todoNo}`;
-  }
+  const todoNo = e.target.dataset.todoNo;
 
+  location.href 
+    = `/todo/delTodo?todoNo=${todoNo}`;
 });
