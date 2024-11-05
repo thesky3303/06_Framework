@@ -71,6 +71,9 @@ WHERE TODO_NO > 5;
 
 
   		UPDATE TB_TODO SET
-  		TODO_TITLE = '테스트44',
-  		TODO_CONTENT = '오오44'
+  		COMPLETE = 'Y'
+  		WHERE TODO_NO = 3;
+  		
+  	  		UPDATE TB_TODO SET
+  		COMPLETE = 'N'
   		WHERE TODO_NO = 3;

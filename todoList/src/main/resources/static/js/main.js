@@ -23,7 +23,7 @@ completeBtn.addEventListener("click", e => {
   // 완료 여부 수정 요청하기
   location.href 
     = `/todo/changeComplete?todoNo=${todoNo}&complete=${complete}`;
-
+	
     // /todo/changeComplete?todoNo=1&complete=Y
 
 });

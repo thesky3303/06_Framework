@@ -1,0 +1,46 @@
+지금껏 배운 어노테이션 공부
+
+
+ex) 컨트롤러 class 에서는 무슨 어노테이션?
+
+      -> 요청/응답 제어하는 역할 명시 + Bean 등록
+	todolist/src/main/java/edu.kh.todo/controller/
+
+
+ex) 컨트롤러 메서드 매개변수 자리에 사용할 수 있는 파라미터 얻어오는 방법
+	@modelattribute / @requestparam ...
+	각 어노테이션 별 이용방법 숙지
+
+
+	todolist/src/main/java/edu.kh.todo/controller/
+
+
+ex) 타임리프에서 세팅된 값 꺼내 출력하는 방법
+
+	demoProject2
+			src/main/resources/templates/templates.example
+
+				ex1~
+
+
+ex) 요청시 데이터 보낼때 (파라미터 제출 시) 어떤 방법으로 제출하는지
+	- form 태그 내부 name 속성값의 의미
+	- a태그에 작성한 href 의 ? (쿼리스트링) 작성 방법 등
+
+	 ex3
+
+
+
+--------------------------------------------------------------------------------------
+
+
+ex) 요청주소 매핑시 사용하는 어노테이션 @requestmapping / @getmapping 
+	-클래스에 작성 & 메서드 작성 사용 방법
+
+
+
+ex) 마이바티스 @mapper interface의 OOO 와 *-mapper.xml 의 ooo 같아야 한다
+
+ex) 마이바티스에서 SQL 작성 시 파라미터로 DTO 를 전달받았을 때 값을 SQL 에 어떻게 꺼내 쓰는지
+
+ex) IOC/DI 관련된 어노테이션!!!
