@@ -3,33 +3,13 @@
 
 ex) 컨트롤러 class 에서는 무슨 어노테이션?
 
-      -> 요청/응답 제어하는 역할 명시 + Bean 등록
-	todolist/src/main/java/edu.kh.todo/controller/
-
-
 ex) 컨트롤러 메서드 매개변수 자리에 사용할 수 있는 파라미터 얻어오는 방법
-	@modelattribute / @requestparam ...
-	각 어노테이션 별 이용방법 숙지
-
-
-	todolist/src/main/java/edu.kh.todo/controller/
-
 
 ex) 타임리프에서 세팅된 값 꺼내 출력하는 방법
-
-	demoProject2
-			src/main/resources/templates/templates.example
-
-				ex1~
-
 
 ex) 요청시 데이터 보낼때 (파라미터 제출 시) 어떤 방법으로 제출하는지
 	- form 태그 내부 name 속성값의 의미
 	- a태그에 작성한 href 의 ? (쿼리스트링) 작성 방법 등
-
-	 ex3
-
-
 
 --------------------------------------------------------------------------------------
 
