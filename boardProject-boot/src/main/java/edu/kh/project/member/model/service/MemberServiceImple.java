@@ -50,7 +50,7 @@ public class MemberServiceImple implements MemberService {
 		//    두 비밀번호가 일치하는지 확인
 		
 		// 일치하지 않으면
-		if( bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw()) ) {
+		if( !bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw()) ) {
 			return null;
 		}
 		
