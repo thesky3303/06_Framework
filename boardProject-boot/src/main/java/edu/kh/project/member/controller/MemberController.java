@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.dto.Member;
@@ -13,6 +14,15 @@ import edu.kh.project.member.model.service.MemberService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
+/*
+ * @SessionAttributes( {"key", "key", "key" ...} )
+ * - Model에 추가된 속성 중
+ * 	 key값이 일치하는 속성을 session scope로 변경
+ * 
+ * */
+
+
+@SessionAttributes({"loginMember"})
 @Controller
 @Slf4j
 @RequestMapping("member")
@@ -58,6 +68,13 @@ public class MemberController {
 		// 로그인 실패 시
 		if(loginMember == null) {
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+		} else {
+			
+			// Session scope에 loginMember 추가
+			model.addAttribute("loginMember", loginMember);
+			// 1단계 : request scope 에 세팅됨
+			// 2단계 : 클래스 위에 @SessionAttributes() 어노테이션 작성하여
+			// 		   session scope로 이동
 		}
 		
 		
