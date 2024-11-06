@@ -3,10 +3,12 @@ package edu.kh.project.member.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.dto.Member;
@@ -80,5 +82,21 @@ public class MemberController {
 		
 		return "redirect:/"; // 메인페이지 재요청
 	}
+	
+	/** 로그아웃 : ssison에 저장된 로그인된 회원 정보를 없앰
+	 * @param SessionStatus : @SessionAttributes로 지정된 특정 속성을 세션에서 제거 기능 제공 객체
+	 * @return
+	 */
+	@GetMapping("logout")
+	public String logout(SessionStatus status) {
+		
+		status.setComplete(); // 세션을 완료 시킴 (== 세션에서 @SessionAttributes로 등록된 세션 제거)
+		
+		return "redirect:/";
+	}
+	
+	
+	
+	
 	
 }
