@@ -46,8 +46,15 @@ public class MemberServiceImple implements MemberService {
 		//    암호화된 비밀번호(loginMember.getMemberPw())
 		//    두 비밀번호가 일치하는지 확인
 		
+		// 일치하지 않으면
+		if( bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw()) ) {
+			return null;
+		}
 		
-		return null;
+		// 로그인 결과에서 비밀번호 제거
+		loginMember.setMemberPw(null);
+		
+		return loginMember;
 	}
 	
 	
