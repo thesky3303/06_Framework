@@ -32,7 +32,10 @@ public class MemberServiceImple implements MemberService {
 		String bcryptPassword = bcrypt.encode(inputMember.getMemberPw());
 		//log.debug("bcryptPassword : " + bcryptPassword);
 		
-		//boolean result = bcrypt.matches(inputMember.getMemberPw(), bcryptPassword);
+		// bcrypt.matches(평문, 암호화) : 평문과 암호화가 일치하면 true, 아니면 false
+		// boolean result = bcrypt.matches(inputMember.getMemberPw(), 
+		// '$2a$10$.9m6WzdYXqEIfr01MBCmmuyea9x1jiJvZrBTwqstAO9FxksbdvzeO');
+	
 		
 		//log.debug("result : " + result );
 		
