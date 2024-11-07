@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
 import edu.kh.project.email.model.mapper.EmailMapper;
@@ -33,7 +34,25 @@ public class EmailServiceImple implements EmailService {
 		map.put("authKey", authKey);
 		map.put("email", email);
 		
+		log.debug("map : " + map);
+		
+		storeAuthKey(map);
+		
+		
 		return null;
+	}
+
+	// 인증키와 이메일을 DB에 저장하는 메서드
+	@Transactional(rollbackFor = Exception.class) // 메서드 레벨에서도 이용 가능(해당 메서드에서만 트랜잭션 커밋/롤백)
+	private void storeAuthKey(Map<String, String> map) {
+		
+		// 1 . 기존 이메일에 대한 인증키 update 수행
+		int result = mapper.updateAuthKey(map);
+		
+		// 2. update 실패 (== 기존 데이터 없음) 시 insert 수행
+		
+		
+		
 	}
 
 	// 인증번호 발급 메서드
