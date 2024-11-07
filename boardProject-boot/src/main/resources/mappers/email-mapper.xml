@@ -17,7 +17,7 @@
   	<!-- 인증 번호 삽입 -->
   	<insert id="insertAuthKey">
   		INSERT INTO "TB_AUTH_KEY"
-  		VALUES(SEQ_KEY_NO.NEXTVAL, #{email}, #{authkey}, DEFAULT)
+  		VALUES(SEQ_KEY_NO.NEXTVAL, #{email}, #{authKey}, DEFAULT)
   	</insert>
   	
   	
