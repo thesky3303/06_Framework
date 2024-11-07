@@ -117,6 +117,12 @@ public class EmailServiceImple implements EmailService {
 	private String createAuthKey() {
 		return UUID.randomUUID().toString().substring(0, 6);
 	}
+
+	// 입력받은 이메일, 인증번호가 DB에 있는지 조회
+	@Override
+	public int checkAuthkey(Map<String, String> map) {
+		return mapper.checkAuthkey(map);
+	}
 	
 	
 	
