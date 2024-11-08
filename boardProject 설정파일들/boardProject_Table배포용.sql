@@ -85,7 +85,9 @@ AND MEMBER_EMAIL = 'user02@kh.or.kr';
 
 
 
-
+  		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_NICKNAME = '유저일';
 
 
 -----------------------------------------
