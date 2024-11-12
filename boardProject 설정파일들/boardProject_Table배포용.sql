@@ -89,7 +89,19 @@ AND MEMBER_EMAIL = 'user02@kh.or.kr';
 		FROM "MEMBER"
 		WHERE MEMBER_NICKNAME = '유저일';
 
-
+		SELECT MEMBER_PW
+		FROM "MEMBER"
+		WHERE MEMBER_NO = 2;
+	
+	
+-- 탈퇴한 회원 다시 복구
+UPDATE MEMBER
+SET MEMBER_DEL_FL = 'N'
+ WHERE MEMBER_NO = 2;
+	
+COMMIT;
+	
+	
 -----------------------------------------
 
 /* 이메일, 인증키 저장 테이블 생성 */
@@ -136,7 +148,10 @@ COMMENT ON COLUMN "UPLOAD_FILE"."FILE_UPLOAD_DATE" IS '업로드 날짜';
 
 COMMENT ON COLUMN "UPLOAD_FILE"."MEMBER_NO" IS '업로드한 회원 번호';
 
+-- 시퀸스 SEQ_FILE_NO 생성
+CREATE SEQUENCE SEQ_FILE_NO NOCACHE; 
 
+SELECT * FROM UPLOAD_FILE;
 ------------------------------------------
 
 /* 게시판 테이블 생성 */

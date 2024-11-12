@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import edu.kh.project.email.model.service.EmailService;
 import lombok.RequiredArgsConstructor;
 
-
 @Controller
 @RequestMapping("email")
 @RequiredArgsConstructor // final 필드에 자동으로 의존성 주입 (@Autowired 생성자 방식 코드 자동완성)
@@ -42,7 +41,7 @@ public class EmailController {
 	@ResponseBody
 	@PostMapping("checkAuthKey")
 	public int checkAuthKey(@RequestBody Map<String, String> map) {
-		return service.checkAuthkey(map);
+		return service.checkAuthKey(map);
 	}
 	
 	

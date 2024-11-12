@@ -15,6 +15,6 @@ public interface EmailService {
 	 * @param map
 	 * @return
 	 */
-	int checkAuthkey(Map<String, String> map);
+	int checkAuthKey(Map<String, String> map);
 
 }

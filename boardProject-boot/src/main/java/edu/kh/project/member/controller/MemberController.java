@@ -185,7 +185,9 @@ public class MemberController {
 			path = "signup";
 		}
 		
+		
 		ra.addFlashAttribute("message", message);
+		
 		
 		return "redirect:" + path;
 		// 성공 -> redirect:/

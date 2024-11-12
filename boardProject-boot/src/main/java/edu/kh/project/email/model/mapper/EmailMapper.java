@@ -23,6 +23,6 @@ public interface EmailMapper {
 	 * @param map (email, authKey)
 	 * @return
 	 */
-	int checkAuthkey(Map<String, String> map);
+	int checkAuthKey(Map<String, String> map);
 	
 }
