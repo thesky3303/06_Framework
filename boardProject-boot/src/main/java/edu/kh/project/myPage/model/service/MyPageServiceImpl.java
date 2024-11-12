@@ -1,6 +1,7 @@
 package edu.kh.project.myPage.model.service;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.project.common.util.Utility;
 import edu.kh.project.member.model.dto.Member;
+import edu.kh.project.myPage.model.dto.UploadFile;
 import edu.kh.project.myPage.model.mapper.MyPageMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -165,10 +167,40 @@ public class MyPageServiceImpl implements MyPageService {
 		// webPath, memberNo, 원본 파일명, 변경된 파일명
 		String fileRename = Utility.fileRename(uploadFile.getOriginalFilename());
 		
-		log.debug("fileRename : " + fileRename);
+		//log.debug("fileRename : " + fileRename); // 20241112101951_00001.png
+		
+		// Builder 패턴을 이용해서 UploadFile 객체 생성
+		// 장점 1) 반복되는 참조변수명, set 구문 생략
+		// 장점 2) method chaining 을 이용하여 한 줄로 작성 가능
+		UploadFile uf = UploadFile.builder()
+						.memberNo(memberNo)
+						.filePath(webPath)
+						.fileOriginalName(uploadFile.getOriginalFilename())
+						.fileRename(fileRename)
+						.build();
+		
+		int result = mapper.insertUploadFile(uf);
+		
+		// 3. 삽입 (INSERT) 성공 시 파일을 지정된 서버 폴더에 저장
+		
+		// 삽입 실패 시
+		if(result == 0) return 0;
+		
+		// 삽입 성공 시
+		
+		// C:/uploadFiles/test/변경된파일명 으로
+		// 파일을 서버 컴퓨터에 저장!
+		uploadFile.transferTo(new File(folderPath + fileRename));
+						// C:/uploadFiles/test/20241112101951_00001.png
 		
 		
-		return 0;
+		return result; // 1
+	}
+
+	// 파일 목록 조회 서비스
+	@Override
+	public List<UploadFile> fileList(int memberNo) {
+		return mapper.fileList(memberNo);
 	}
 
 	
