@@ -330,6 +330,70 @@ public class MypageController {
 		return "myPage/myPage-fileList";
 	}
 	
+	@PostMapping("file/test3")
+	public String fileUpload3( @RequestParam("aaa") List<MultipartFile> aaaList,
+								@RequestParam("bbb") List<MultipartFile> bbbList,
+								@SessionAttribute("loginMember") Member loginMember,
+								RedirectAttributes ra ) throws Exception {
+		
+		// aaa 파일 미제출 시 
+		// -> 0번, 1번 인덱스 파일이 모두 비어있음
+		
+		// bbb(multiple) 파일 미제출 시
+		// -> 0번 인덱스 파일이 비어있음
+		
+		//log.debug("aaaList : " + aaaList);
+		//log.debug("bbbList : " + bbbList);
+		
+		// 여러 파일 업로드 서비스 호출
+		int memberNo = loginMember.getMemberNo();
+		
+		int result = service.fileUpload3(aaaList, bbbList, memberNo);
+		// result == 업로드된 파일 개수
+		
+		String message = null;
+		
+		if(result == 0) {
+			message = "업로드된 파일이 없습니다";		
+			
+		} else {
+			message = "파일 업로드 실패...";
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:/myPage/fileTest";
+	}
+	
+	
+	/** 프로필 이미지 변경
+	 * @param profileImg
+	 * @param loginMember
+	 * @param ra
+	 * @return
+	 */
+	@PostMapping("profile")
+	public String profile( @RequestParam("profileImg") MultipartFile profileImg,
+						  @SessionAttribute("loginMember") Member loginMember,
+						  RedirectAttributes ra) throws Exception {
+		
+		// 서비스 호출
+		int result = service.profile(profileImg, loginMember);
+		
+		String message = null;
+		
+		if(result > 0) {
+			message = "변경 성공!";		
+		} else {
+			message = "변경 실패";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:profile"; // 리다이렉트 - /mypage/profile
+	}
+	
 	
 	
 	
