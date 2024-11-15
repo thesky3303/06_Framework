@@ -1,5 +1,9 @@
 package edu.kh.project.member.model.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -115,13 +119,30 @@ public class MemberServiceImple implements MemberService {
 		return mapper.signup(inputMember);
 	}
 	
+	//------------------------------------------------------------
+	// 비동기 테스트
+
+	@Override
+	public List<Member> selectMemberList() {
+		return mapper.selectMemberList();
+	}
 	
+	@Override
+	public int resetPw(int inputNo) {
+		// pass01! -> 암호화
+		String encPw = bcrypt.encode("pass01!");
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("inputNo", inputNo);
+		map.put("encPw", encPw);
+
+		return mapper.resetPw(map);
+	}
 	
-	
-	
-	
-	
-	
+	@Override
+	public int restoreMember(int inputNo) {
+		return mapper.restoreMember(inputNo);
+	}
 	
 	
 }

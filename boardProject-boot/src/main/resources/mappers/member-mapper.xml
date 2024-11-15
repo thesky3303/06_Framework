@@ -50,5 +50,28 @@
 	   )
   	</insert>
   	
+  	<!--      비동기 테스트       -->
+  	<select id="selectMemberList" resultType="Member">
+  	SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_DEL_FL
+	FROM MEMBER
+  	</select>
+  	
+  	<!--  비밀번호 초기화(비동기) -->
+	<update id="resetPw">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{encPw}
+		WHERE MEMBER_NO = #{inputNo}
+	</update>
+
+	<!-- 탈퇴 회원 복구(비동기) -->
+	<update id="restoreMember">
+		UPDATE "MEMBER" SET
+		MEMBER_DEL_FL = 'N'
+		WHERE MEMBER_NO = #{inputNo}
+	</update>	
+  	
+  	
+  	
+  	
   	
 </mapper>

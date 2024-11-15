@@ -535,19 +535,19 @@ INSERT INTO "BOARD_IMG" VALUES(
 );
 
 INSERT INTO "BOARD_IMG" VALUES(
-	SEQ_IMG_NO.NEXTVAL, '/images/board/', '원본2.jpg', 'test2.jpg', 1, 1994
+	SEQ_IMG_NO.NEXTVAL, '/images/board/', '원본2.jpg', 'test2.jpg', 1, 1997
 );
 
 INSERT INTO "BOARD_IMG" VALUES(
-	SEQ_IMG_NO.NEXTVAL, '/images/board/', '원본3.jpg', 'test3.jpg', 2, 1992
+	SEQ_IMG_NO.NEXTVAL, '/images/board/', '원본3.jpg', 'test3.jpg', 2, 1997
 );
 
 INSERT INTO "BOARD_IMG" VALUES(
-	SEQ_IMG_NO.NEXTVAL, '/images/board/', '원본4.jpg', 'test4.jpg', 3, 1984
+	SEQ_IMG_NO.NEXTVAL, '/images/board/', '원본4.jpg', 'test4.jpg', 3, 1997
 );
 
 INSERT INTO "BOARD_IMG" VALUES(
-	SEQ_IMG_NO.NEXTVAL, '/images/board/', '원본5.jpg', 'test5.jpg', 4, 1980
+	SEQ_IMG_NO.NEXTVAL, '/images/board/', '원본5.jpg', 'test5.jpg', 4, 1997
 );
 
 
@@ -555,12 +555,15 @@ COMMIT;
 
 SELECT  * FROM BOARD_IMG;
 
+DELETE FROM BOARD_IMG
+WHERE IMG_NO = 4;
+
 
 
 -- 게시글 상세조회
 SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, BOARD_CODE, READ_COUNT,
 MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG,
-TO_CHAR(BOARD_WRITE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') BOARD_WRTIE_DATE,
+TO_CHAR(BOARD_WRITE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') BOARD_WRITE_DATE,
 TO_CHAR(BOARD_UPDATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') BOARD_UPDATE_DATE,
 
 ( SELECT COUNT(*)
@@ -597,6 +600,11 @@ WHERE BOARD_NO = 1997;
 
 
 SELECT * FROM MEMBER;
+
+
+SELECT member_no, member_email, member_nickname, member_del_fl
+FROM MEMBER;
+
 
 -- 해당 게시글의 댓글 목록 조회
 INSERT INTO "COMMENT"	
