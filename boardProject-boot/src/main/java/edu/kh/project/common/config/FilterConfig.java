@@ -22,13 +22,13 @@ public class FilterConfig {
 		// 사용할 필터 객체 추가
 		filter.setFilter(new LoginFilter());
 		
-		// 필터가 동작할 URL 을 세팅
+		//  필터가 동작할 URL 을 세팅
 		
-		// /myPage/*  : myPage로 시작하는 모든 요청
+		// /myPage/*   : myPage로 시작하는 모든 요청
 		String[] filteringURL = {"/myPage/*", "/editBoard/*", "/chatting/*"};
+		
 		// String[] 을 List 로 변환
 		// Arrays.asList(filteringURL) -> List
-		
 		filter.setUrlPatterns( Arrays.asList(filteringURL) );
 		
 		// 필터 이름 지정
@@ -38,7 +38,7 @@ public class FilterConfig {
 		filter.setOrder(1);
 		
 		return filter; // 반환된 객체가 필터를 생성해서 Bean 으로 등록
+		
+		
 	}
-	
-
 }

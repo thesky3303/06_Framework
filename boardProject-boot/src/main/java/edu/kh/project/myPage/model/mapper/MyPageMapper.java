@@ -18,14 +18,14 @@ public interface MyPageMapper {
 	int updateInfo(Member inputMember);
 
 	/** 회원의 비밀번호 조회
-	 * @param memberNo
+	 * @param memberNo 
 	 * @return 암호화된 비밀번호
 	 */
 	String selectPw(int memberNo);
 
 	/** 비밀번호 변경
 	 * @param paramMap
-	 * @return result
+	 * @return result 
 	 */
 	int changePw(Map<String, Object> paramMap);
 
@@ -52,7 +52,16 @@ public interface MyPageMapper {
 	 * @return
 	 */
 	int profile(Member mem);
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

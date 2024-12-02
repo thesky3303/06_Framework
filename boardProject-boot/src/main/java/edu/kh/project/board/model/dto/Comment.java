@@ -1,7 +1,5 @@
 package edu.kh.project.board.model.dto;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Builder 
+@Builder
 public class Comment {
 	
 	private int commentNo;
@@ -28,5 +26,4 @@ public class Comment {
 	// 댓글 조회 시 회원 프로필, 닉네임
 	private String memberNickname;
 	private String profileImg;
-
 }

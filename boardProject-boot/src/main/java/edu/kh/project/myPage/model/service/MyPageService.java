@@ -31,7 +31,7 @@ public interface MyPageService {
 	 */
 	int secession(String memberPw, int memberNo);
 
-	/** 파일 업로드 테스트1
+	/** 파일 업로드 테스트 1
 	 * @param uploadFile
 	 * @return path
 	 */
@@ -40,7 +40,7 @@ public interface MyPageService {
 	/** 파일 업로드 테스트2 (+DB)
 	 * @param uploadFile
 	 * @param memberNo
-	 * @return
+	 * @return result
 	 */
 	int fileUpload2(MultipartFile uploadFile, int memberNo) throws Exception;
 
@@ -64,7 +64,6 @@ public interface MyPageService {
 	 * @return
 	 */
 	int profile(MultipartFile profileImg, Member loginMember) throws Exception;
-
 
 
 }

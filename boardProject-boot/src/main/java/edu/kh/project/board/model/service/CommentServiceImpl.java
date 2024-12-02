@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional(rollbackFor = Exception.class)
 @RequiredArgsConstructor
-public class CommentServiceImpl implements CommentService {
+public class CommentServiceImpl implements CommentService{
 
 	private final CommentMapper mapper;
 	
@@ -22,7 +22,7 @@ public class CommentServiceImpl implements CommentService {
 		return mapper.select(boardNo);
 	}
 	
-	// 댓글 / 답글 등록
+	// 댓글/답글 등록
 	@Override
 	public int insert(Comment comment) {
 		return mapper.insert(comment);
@@ -36,8 +36,8 @@ public class CommentServiceImpl implements CommentService {
 	
 	// 댓글 수정
 	@Override
-	public int put(Comment comment) {
-		return mapper.put(comment);
+	public int update(Comment comment) {
+		return mapper.update(comment);
 	}
 	
 }

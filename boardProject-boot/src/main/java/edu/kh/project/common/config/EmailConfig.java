@@ -35,7 +35,7 @@ public class EmailConfig {
 	   - SMTP: 서버 간 통신이 가능하며, 이메일을 발신 서버에서 수신 서버로 전달하는 식으로 동작함.
 	 * */
 
-	// @value : properties에 작성된 내용 중 key가 일치하는 value값을 얻어와 필드에 대입
+	// @Value : properties에 작성된 내용 중 key가 일치하는 value값을 얻어와 필드에 대입
 	@Value("${spring.mail.username}")
 	private String userName;
 	
@@ -43,7 +43,7 @@ public class EmailConfig {
 	private String password;
 	
 	@Bean
-	public JavaMailSender JavaMailSender() {
+	public JavaMailSender javaMailSender() {
 		/*
 		 * 
 		 * Spring에서 JavaMailSender를 구성하는 Bean을 정의.
@@ -59,7 +59,7 @@ public class EmailConfig {
 		
 		Properties prop = new Properties();
 		
-		prop.setProperty("mail.transport.protocol", "smtp"); // // 전송 프로토콜을 설정. 여기서는 SMTP를 사용
+		prop.setProperty("mail.transport.protocol", "smtp"); // 전송 프로토콜을 설정. 여기서는 SMTP를 사용
 		prop.setProperty("mail.smtp.auth", "true"); // SMTP 서버 인증을 사용할지 여부를 설정함. 
 													// true로 설정되어 있으므로 인증이 사용됨
 													// SMTP 서버를 사용하여 이메일을 보내려면 보안 상의 이유로 인증이 필요.
@@ -77,26 +77,15 @@ public class EmailConfig {
 		mailSender.setDefaultEncoding("UTF-8"); // 기본 인코딩을 설정
 		mailSender.setJavaMailProperties(prop); // JavaMail의 속성을 설정(앞서 정의해둔 prop 있는 설정들을 여기에 추가)
 		
-		return mailSender;
-		// 위처럼 각종 설정이 적용된 JavaMailSender를 Bean으로 등록하여
-		// Spring 애플리케이션에서 이메일을 보내기 윟나 구성을 제공함
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		return mailSender; 
+		// 위처럼 각종 설정이 적용된 JavaMailSender를 Bean으로 등록하여 
+		//Spring 애플케이션에서 이메일을 보내기 위한 구성을 제공함
 		
 	}
+	
+	
+	
+	
+	
 	
 }

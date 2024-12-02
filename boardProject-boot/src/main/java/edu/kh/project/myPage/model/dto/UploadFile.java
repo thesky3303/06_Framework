@@ -22,6 +22,6 @@ public class UploadFile {
 	private String fileRename;
 	private String fileUploadDate;
 	private int memberNo;
-	// DTO 만들때 관련된 테이블 컬럼과 반드시 동일하게 만들어야 하는건 아니다!
+	// DTO 만들때 관련된 테이블 컬럼과 반드시 동일하게 만들어야하는건 아니다!
 	private String memberNickname;
 }

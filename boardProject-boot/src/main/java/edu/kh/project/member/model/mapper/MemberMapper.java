@@ -14,7 +14,7 @@ public interface MemberMapper {
 	 * @param memberEmail
 	 * @return loginMember
 	 */
-	Member login(String memberEmail);
+	Member login(String memberEmail) throws Exception;
 
 	/** 이메일 중복검사
 	 * @param memberEmail
@@ -33,10 +33,7 @@ public interface MemberMapper {
 	 * @return result
 	 */
 	int signup(Member inputMember);
-	
-	
-	//------------------------------------------------------------
-	// 비동기 테스트
+
 	
 	/** 회원 목록 조회(비동기)
 	 * @return memberList
@@ -54,6 +51,5 @@ public interface MemberMapper {
 	 * @return
 	 */
 	int restoreMember(int inputNo);
-
 
 }

@@ -1,6 +1,7 @@
 package edu.kh.project.board.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,5 +15,20 @@ public interface EditBoardService {
 	 * @return boardNo
 	 */
 	int boardInsert(Board inputBoard, List<MultipartFile> images) throws Exception;
+
+	/** 게시글 수정
+	 * @param inputBoard
+	 * @param images
+	 * @param deleteOrderList
+	 * @return
+	 * @throws Exception
+	 */
+	int boardUpdate(Board inputBoard, List<MultipartFile> images, String deleteOrderList) throws Exception;
+
+	/** 게시글 삭제
+	 * @param map
+	 * @return result
+	 */
+	int boardDelete(Map<String, Integer> map);
 
 }

@@ -11,9 +11,9 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Builder
 public class Board {
 	// BOARD 테이블 컬럼
@@ -37,10 +37,10 @@ public class Board {
 	// 게시글 작성자 프로필 이미지
 	private String profileImg;
 	
-	// 게시플 목록 썸네일 이미지
-	private String thumbnail;
+	// 게시글 목록 썸네일 이미지
+	private String thumbnail; 
 	
-	// -- 추가예정 --
+	// -- 추가 예정--
 	// 특정 게시글 이미지 목록
 	private List<BoardImg> imageList;
 	
